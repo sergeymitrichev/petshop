@@ -1,10 +1,24 @@
 package home.petshop.entity;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "CATEGORY")
 public class Category {
+    @Id
+    @Column(name = "CATEGORY_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "NAME")
     private String name;
+
+    @Column(name = "DESCRIPTION")
     private String description;
-    private String hgu;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "CATEGORY")
+    private List<Product> products;
 
     public int getId() {
         return id;
@@ -30,11 +44,11 @@ public class Category {
         this.description = description;
     }
 
-    public String getHgu() {
-        return hgu;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setHgu(String hgu) {
-        this.hgu = hgu;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }
