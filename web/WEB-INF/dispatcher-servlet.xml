@@ -41,13 +41,22 @@
         </property>
     </bean>
 
-    <!--NoteDao and NoteService beans-->
+    <!--ProductDao and ProductService beans-->
     <bean id="productDao" class="home.petshop.dao.ProductDaoImpl">
         <property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>
     </bean>
 
     <bean id="productService" class="home.petshop.service.ProductServiceImpl">
         <property name="productDao" ref="productDao"/>
+    </bean>
+
+    <!--CategoryDao and CategoryService beans-->
+    <bean id="categoryDao" class="home.petshop.dao.CategoryDaoImpl">
+        <property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>
+    </bean>
+
+    <bean id="categoryService" class="home.petshop.service.CategoryServiceImpl">
+        <property name="categoryDao" ref="categoryDao"/>
     </bean>
 
     <context:component-scan base-package="home.petshop"/>

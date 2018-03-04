@@ -5,7 +5,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 public class ProductDaoImpl implements ProductDao {
@@ -51,9 +50,5 @@ public class ProductDaoImpl implements ProductDao {
 
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
-    }
-
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
     }
 }
