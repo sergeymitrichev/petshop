@@ -15,6 +15,11 @@
 <c:if test="${!empty listProducts}">
     <c:forEach items="${listProducts}" var="product">
         <p>${product.name}</p>
+        <ul>
+            <li>${product.category.id}</li>
+            <li>${product.category.name}</li>
+            <li>${product.category.description}</li>
+        </ul>
     </c:forEach>
 </c:if>
 </div>
