@@ -30,12 +30,13 @@
         <property name="annotatedClasses">
             <list>
                 <value>home.petshop.entity.Product</value>
+                <value>home.petshop.entity.Category</value>
             </list>
         </property>
         <property name="hibernateProperties">
             <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
-                </prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.enable_lazy_load_no_trans">true</prop>
                 <prop key="hibernate.show_sql">true</prop>
             </props>
         </property>

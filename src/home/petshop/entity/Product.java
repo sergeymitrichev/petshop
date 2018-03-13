@@ -41,9 +41,16 @@ public class Product {
     @Column(name = "WARRANTY")
     private String warranty;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Category.class)
     @JoinColumn(name = "CATEGORY_ID")
     private Category category;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "PRODUCT_CATEGORY", joinColumns = {
+            @JoinColumn(name = "PRODUCT_ID", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "CATEGORY_ID",
+                    nullable = false, updatable = false) })
+    private List<Category> categories;
     /*
         @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
         @JoinTable(name = "PRODUCT_ATTRIBUTE", joinColumns = {
@@ -66,12 +73,7 @@ public class Product {
                         nullable = false, updatable = false) })
         private List<Modification> modifications;
 
-        @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-        @JoinTable(name = "PRODUCT_CATEGORY", joinColumns = {
-                @JoinColumn(name = "PRODUCT_ID", nullable = false, updatable = false) },
-                inverseJoinColumns = { @JoinColumn(name = "CATEGORY_ID",
-                        nullable = false, updatable = false) })
-        private List<Category> categories;
+
     */
     public int getId() {
         return id;
@@ -168,6 +170,14 @@ public class Product {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
 /*
     public List<Attribute> getAttributes() {
         return attributes;
@@ -193,11 +203,5 @@ public class Product {
         this.modifications = modifications;
     }
 
-    public List<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
-    }*/
+   */
 }
