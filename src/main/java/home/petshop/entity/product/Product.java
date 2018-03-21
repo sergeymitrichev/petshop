@@ -45,8 +45,8 @@ public class Product extends AbstractSeoEntity {
                     nullable = false, updatable = false) })
     private List<Category> categories;
 
-    public Product(int price, boolean isActive, String name, Integer categoryId) {
-        super(name);
+    public Product(int id, int price, boolean isActive, String name, Integer categoryId) {
+        super(id, name);
         this.price = price;
         this.isActive = isActive;
         this.name = name;

@@ -5,8 +5,8 @@ public abstract class AbstractSeoEntity extends AbstractNamedEntity {
     private String metaDescription;
     private String metaKeywords;
 
-    public AbstractSeoEntity(String name) {
-        super(name);
+    public AbstractSeoEntity(int id, String name) {
+        super(id, name);
     }
 
     public String getTitle() {

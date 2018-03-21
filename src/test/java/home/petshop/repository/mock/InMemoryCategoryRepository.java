@@ -1,8 +1,7 @@
-package java.home.petshop.repository.mock;
+package home.petshop.repository.mock;
 
 import home.petshop.entity.product.Category;
 import home.petshop.repository.CategoryRepository;
-import home.petshop.util.CategoriesUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +12,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class InMemoryCategoryRepository implements CategoryRepository {
     private Map<Integer, Category> repository = new ConcurrentHashMap<>();
     private AtomicInteger counter = new AtomicInteger(0);
-
-    {
-        CategoriesUtil.CATEGORIES.forEach(this::save);
-    }
 
     @Override
     public Category save(Category category) {

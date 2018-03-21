@@ -1,8 +1,7 @@
-package java.home.petshop.repository.mock;
+package home.petshop.repository.mock;
 
 import home.petshop.entity.product.Product;
 import home.petshop.repository.ProductRepository;
-import home.petshop.util.ProductsUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +12,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class InMemoryProductRepository implements ProductRepository {
     private Map<Integer, Product> repository = new ConcurrentHashMap<>();
     private AtomicInteger counter = new AtomicInteger(0);
-
-    {
-        ProductsUtil.PRODUCTS.forEach(this::save);
-    }
 
     @Override
     public Product save(Product product) {
