@@ -15,8 +15,8 @@ public class Category extends AbstractSeoEntity {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "category")
     private List<Product> products;
 
-    public Category(String name) {
-        super(name);
+    public Category(int id, String name) {
+        super(id, name);
     }
 
     public String getDescription() {

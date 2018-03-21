@@ -1,4 +1,4 @@
-package java.home.petshop.repository.mock;
+package home.petshop.repository.mock;
 
 import home.petshop.entity.user.User;
 import home.petshop.repository.UserRepository;
@@ -30,7 +30,7 @@ public class MockUserRepository implements UserRepository {
     }
 
     @Override
-    public List<User> list() {
+    public List<User> getAll() {
         return null;
     }
 }

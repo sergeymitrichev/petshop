@@ -8,8 +8,8 @@ public class Brand extends AbstractSeoEntity {
     private String description;
     private String hgu;
 
-    public Brand(String name) {
-        super(name);
+    public Brand(int id, String name) {
+        super(id, name);
     }
 
     public String getDescription() {

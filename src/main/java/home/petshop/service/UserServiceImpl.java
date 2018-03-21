@@ -3,6 +3,7 @@ package home.petshop.service;
 import home.petshop.entity.user.User;
 import home.petshop.repository.UserRepository;
 import home.petshop.util.exception.NotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository repository;
 
+    @Autowired
     public UserServiceImpl(UserRepository repository) {
         this.repository = repository;
     }
@@ -28,7 +30,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User get(int id) throws NotFoundException {
-        return null;
+        return repository.get(id);
     }
 
     @Override
@@ -44,5 +46,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public void update(User user) throws NotFoundException {
 
+    }
+
+    public UserRepository getRepository() {
+        return repository;
     }
 }

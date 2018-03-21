@@ -8,7 +8,7 @@ import home.petshop.entity.AbstractSeoEntity;
  * поводу
  */
 public class ListProduct extends AbstractSeoEntity {
-    public ListProduct(String name) {
-        super(name);
+    public ListProduct(int id, String name) {
+        super(id, name);
     }
 }

@@ -8,11 +8,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+//@Service
 public class ProductServiceImpl implements ProductService {
 
+    private final ProductRepository repository;
+
     @Autowired
-    private ProductRepository repository;
+    public ProductServiceImpl(ProductRepository repository) {
+        this.repository = repository;
+    }
 
 
     @Override
@@ -43,5 +47,9 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void update(Product product) throws NotFoundException {
 
+    }
+
+    public ProductRepository getRepository() {
+        return repository;
     }
 }

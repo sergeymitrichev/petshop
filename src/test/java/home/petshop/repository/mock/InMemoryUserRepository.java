@@ -1,8 +1,7 @@
-package java.home.petshop.repository.mock;
+package home.petshop.repository.mock;
 
 import home.petshop.entity.user.User;
 import home.petshop.repository.UserRepository;
-import home.petshop.util.UsersUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +12,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class InMemoryUserRepository implements UserRepository {
     private Map<Integer, User> repository = new ConcurrentHashMap<>();
     private AtomicInteger counter = new AtomicInteger(0);
-
-    {
-        UsersUtil.USERS.forEach(this::save);
-    }
 
     @Override
     public User save(User user) {
@@ -44,7 +39,7 @@ public class InMemoryUserRepository implements UserRepository {
     }
 
     @Override
-    public List<User> list() {
+    public List<User> getAll() {
         return new ArrayList<>(repository.values());
     }
 }
