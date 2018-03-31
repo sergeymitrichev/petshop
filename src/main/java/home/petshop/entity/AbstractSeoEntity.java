@@ -1,8 +1,17 @@
 package home.petshop.entity;
 
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public abstract class AbstractSeoEntity extends AbstractNamedEntity {
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "meta_description")
     private String metaDescription;
+
+    @Column(name = "meta_keywords")
     private String metaKeywords;
 
     public AbstractSeoEntity(int id, String name) {

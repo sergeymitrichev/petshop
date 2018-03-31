@@ -1,6 +1,5 @@
 package home.petshop.web;
 
-import home.petshop.AuthorizedUser;
 import home.petshop.web.user.ProfileRestController;
 import org.slf4j.Logger;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -15,7 +14,7 @@ import java.io.IOException;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-public class UserServlet extends HttpServlet {
+public class AdminServlet extends HttpServlet {
     private static final Logger log = getLogger(UserServlet.class);
 
     private ConfigurableApplicationContext springContext;
@@ -34,17 +33,14 @@ public class UserServlet extends HttpServlet {
         super.destroy();
     }
 
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int userId = Integer.parseInt(request.getParameter("userId"));
-        AuthorizedUser.setId(userId);
-        response.sendRedirect("meals");
+
     }
 
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        log.debug("forward to users");
+        log.debug("redirect to panel/home");
+
         request.setAttribute("users", profileController.getAll());
-        request.getRequestDispatcher("/users.jsp").forward(request, response);
+        request.getRequestDispatcher("/panel/home.jsp").forward(request, response);
     }
 }
