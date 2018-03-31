@@ -1,13 +1,20 @@
 package home.petshop.entity;
 
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotEmpty;
+
+@MappedSuperclass
 public abstract class AbstractNamedEntity extends AbstractBaseEntity {
+    @NotEmpty
+    @Column(name = "name", nullable = false)
     protected String name;
 
     public AbstractNamedEntity() {
 
     }
 
-    public AbstractNamedEntity(int id, String name) {
+    public AbstractNamedEntity(Integer id, String name) {
         super(id);
         this.name = name;
     }

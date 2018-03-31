@@ -5,14 +5,14 @@ import home.petshop.entity.AbstractSeoEntity;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "CATEGORY")
+//@Entity
+//@Table(name = "CATEGORY")
 public class Category extends AbstractSeoEntity {
 
-    @Column(name = "DESCRIPTION")
+    //@Column(name = "DESCRIPTION")
     private String description;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "category")
+    //@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "category")
     private List<Product> products;
 
     public Category(int id, String name) {

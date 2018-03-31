@@ -5,17 +5,17 @@ import home.petshop.entity.AbstractSeoEntity;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "PRODUCT")
+//@Entity
+//@Table(name = "PRODUCT", uniqueConstraints = {@UniqueConstraint(columnNames = "SKU", name = "UNIQUE_SKU")})
 public class Product extends AbstractSeoEntity {
 
-    @Column(name = "EXTERNAL_ID")
+    //@Column(name = "EXTERNAL_ID")
     private int externalId;
 
-    @Column(name = "PRICE")
+    //@Column(name = "PRICE")
     private int price;
 
-    @Column(name = "PRICE_IN")
+    //@Column(name = "PRICE_IN")
     private int priceIn;
 
     @Column(name = "PRICE_OLD")

@@ -1,6 +1,13 @@
 package home.petshop.entity;
 
+import javax.persistence.*;
+
+@MappedSuperclass
+@Access(AccessType.FIELD)
 public abstract class AbstractBaseEntity {
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
 
     public AbstractBaseEntity() {

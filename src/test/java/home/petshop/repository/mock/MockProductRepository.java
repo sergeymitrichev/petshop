@@ -1,4 +1,4 @@
-package java.home.petshop.repository.mock;
+package home.petshop.repository.mock;
 
 import home.petshop.entity.product.Product;
 import home.petshop.repository.ProductRepository;
