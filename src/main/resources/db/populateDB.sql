@@ -4,6 +4,7 @@ DELETE FROM user_roles;
 DELETE FROM users;
 ALTER SEQUENCE seq_users RESTART WITH 1;
 ALTER SEQUENCE seq_companies RESTART WITH 1;
+ALTER SEQUENCE seq_addresses RESTART WITH 1;
 
 INSERT INTO users (name, email, phone, password) VALUES
   ('User', 'user@yandex.ru', '79200226482', 'password'),

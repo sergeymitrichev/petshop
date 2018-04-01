@@ -4,15 +4,27 @@ import home.petshop.entity.AbstractBaseEntity;
 
 import javax.persistence.*;
 
+@NamedQueries({
+        @NamedQuery(name = Address.DELETE, query = "DELETE FROM Address a WHERE a.id=:id"),
+        @NamedQuery(name = Address.BY_SREET, query = "SELECT a FROM Address a WHERE a.street=?1"),
+        @NamedQuery(name = Address.ALL_SORTED, query = "SELECT a FROM Address a ORDER BY a.postal"),
+})
 @Entity
 @Table(name = "USER_ADDRESSES")
 public class Address extends AbstractBaseEntity {
+
+    public static final String DELETE = "Address.delete";
+    public static final String BY_SREET = "Address.getByStreet";
+    public static final String ALL_SORTED = "Address.getAllSorted";
 
     @Column(name = "postal", nullable = false)
     private Integer postal;
 
     @Column(name = "city", nullable = false)
     private String city;
+
+    @Column(name = "street", nullable = false)
+    private String street;
 
     @Column(name = "house", nullable = false)
     private String house;
@@ -31,13 +43,14 @@ public class Address extends AbstractBaseEntity {
     private User user;
 
     public Address(Address a) {
-        this(a.getId(), a.getPostal(), a.getCity(), a.getHouse(), a.getFlat(), a.floor, a.getDescription(), a.getUser());
+        this(a.getId(), a.getPostal(), a.getCity(), a.getStreet(), a.getHouse(), a.getFlat(), a.floor, a.getDescription(), a.getUser());
     }
 
-    public Address(Integer id, Integer postal, String city, String house, Integer flat, Integer floor, String description, User user) {
+    public Address(Integer id, Integer postal, String city, String street, String house, Integer flat, Integer floor, String description, User user) {
         super(id);
         this.postal = postal;
         this.city = city;
+        this.street = street;
         this.house = house;
         this.flat = flat;
         this.floor = floor;
@@ -72,6 +85,14 @@ public class Address extends AbstractBaseEntity {
         this.city = city;
     }
 
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
     public String getHouse() {
         return house;
     }
@@ -104,5 +125,18 @@ public class Address extends AbstractBaseEntity {
         this.description = description;
     }
 
-
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                "postal=" + postal +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", house='" + house + '\'' +
+                ", flat=" + flat +
+                ", floor=" + floor +
+                ", description='" + description + '\'' +
+                ", user=" + user.getEmail() +
+                '}';
+    }
 }

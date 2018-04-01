@@ -4,9 +4,11 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS companies;
 DROP SEQUENCE IF EXISTS seq_users;
 DROP SEQUENCE IF EXISTS seq_companies;
+DROP SEQUENCE IF EXISTS seq_addresses;
 
 CREATE SEQUENCE seq_users START 1;
 CREATE SEQUENCE seq_companies START 1;
+CREATE SEQUENCE seq_addresses START 1;
 
 CREATE TABLE companies
 (
@@ -38,6 +40,7 @@ CREATE TABLE user_roles
 
 CREATE TABLE user_addresses
 (
+  id          INTEGER PRIMARY KEY DEFAULT nextval('seq_addresses'),
   user_id     INTEGER NOT NULL,
   postal      INTEGER NOT NULL,
   city        VARCHAR NOT NULL,
