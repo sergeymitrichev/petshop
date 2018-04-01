@@ -40,7 +40,7 @@ public class JpaAddressRepository implements AddressRepository {
 
     @Override
     public Address getByStreet(String street) {
-        return em.createNamedQuery(Address.BY_SREET, Address.class)
+        return em.createNamedQuery(Address.BY_STREET, Address.class)
                 .setParameter(1, street)
                 .getSingleResult();
     }

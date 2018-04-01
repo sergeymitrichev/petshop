@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @NamedQueries({
         @NamedQuery(name = Address.DELETE, query = "DELETE FROM Address a WHERE a.id=:id"),
-        @NamedQuery(name = Address.BY_SREET, query = "SELECT a FROM Address a WHERE a.street=?1"),
+        @NamedQuery(name = Address.BY_STREET, query = "SELECT a FROM Address a WHERE a.street=?1"),
         @NamedQuery(name = Address.ALL_SORTED, query = "SELECT a FROM Address a ORDER BY a.postal"),
 })
 @Entity
@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Address extends AbstractBaseEntity {
 
     public static final String DELETE = "Address.delete";
-    public static final String BY_SREET = "Address.getByStreet";
+    public static final String BY_STREET = "Address.getByStreet";
     public static final String ALL_SORTED = "Address.getAllSorted";
 
     @Column(name = "postal", nullable = false)
