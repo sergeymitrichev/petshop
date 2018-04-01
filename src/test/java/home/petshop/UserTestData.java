@@ -1,7 +1,6 @@
 package home.petshop;
 
 
-import home.petshop.entity.user.Role;
 import home.petshop.entity.user.User;
 
 import java.util.Arrays;
