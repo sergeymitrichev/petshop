@@ -4,6 +4,7 @@ import home.petshop.entity.AbstractSeoEntity;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 //@Entity
 //@Table(name = "PRODUCT", uniqueConstraints = {@UniqueConstraint(columnNames = "SKU", name = "UNIQUE_SKU")})
@@ -44,6 +45,13 @@ public class Product extends AbstractSeoEntity {
             inverseJoinColumns = { @JoinColumn(name = "CATEGORY_ID",
                     nullable = false, updatable = false) })
     private List<Category> categories;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "PRODUCT_IN_STOCK", joinColumns = {
+            @JoinColumn(name = "PRODUCT_ID", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "STOCK_ID",
+                    nullable = false, updatable = false) })
+    private Set<Stock> stocks;
 
     public Product(int id, int price, boolean isActive, String name, Integer categoryId) {
         super(id, name);
