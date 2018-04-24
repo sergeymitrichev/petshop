@@ -1,10 +1,13 @@
 package home.petshop.entity;
 
+import org.hibernate.Hibernate;
+import org.springframework.data.domain.Persistable;
+
 import javax.persistence.*;
 
 @MappedSuperclass
 @Access(AccessType.FIELD)
-public abstract class AbstractBaseEntity {
+public abstract class AbstractBaseEntity implements Persistable<Integer> {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +20,7 @@ public abstract class AbstractBaseEntity {
         this.id = id;
     }
 
+    @Override
     public Integer getId() {
         return id;
     }
@@ -25,14 +29,19 @@ public abstract class AbstractBaseEntity {
         this.id = id;
     }
 
+    @Override
     public boolean isNew() {
         return this.id == null;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || !getClass().equals(Hibernate.getClass(o))) {
+            return false;
+        }
 
         AbstractBaseEntity that = (AbstractBaseEntity) o;
 

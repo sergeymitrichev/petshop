@@ -6,8 +6,8 @@ import javax.persistence.*;
 
 @NamedQueries({
         @NamedQuery(name = Address.DELETE, query = "DELETE FROM Address a WHERE a.id=:id"),
-        @NamedQuery(name = Address.BY_STREET, query = "SELECT a FROM Address a WHERE a.street=?1"),
-        @NamedQuery(name = Address.ALL_SORTED, query = "SELECT a FROM Address a ORDER BY a.postal"),
+        @NamedQuery(name = Address.BY_STREET, query = "SELECT a FROM Address a WHERE a.street=?1 AND a.user.id=?2"),
+        @NamedQuery(name = Address.ALL_SORTED, query = "SELECT a FROM Address a WHERE a.user.id=?1 ORDER BY a.postal")
 })
 @Entity
 @Table(name = "USER_ADDRESSES")
@@ -56,6 +56,17 @@ public class Address extends AbstractBaseEntity {
         this.floor = floor;
         this.description = description;
         this.user = user;
+    }
+
+    public Address(Integer id, Integer postal, String city, String street, String house, Integer flat, Integer floor, String description) {
+        super(id);
+        this.postal = postal;
+        this.city = city;
+        this.street = street;
+        this.house = house;
+        this.flat = flat;
+        this.floor = floor;
+        this.description = description;
     }
 
     public Address() {

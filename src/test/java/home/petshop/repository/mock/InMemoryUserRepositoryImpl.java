@@ -17,7 +17,7 @@ import static home.petshop.UserTestData.ADMIN;
 import static home.petshop.UserTestData.USER;
 
 @Repository
-public class InMemoryUserRepository implements UserRepository {
+public class InMemoryUserRepositoryImpl implements UserRepository {
     private Map<Integer, User> repository = new ConcurrentHashMap<>();
     private AtomicInteger counter = new AtomicInteger(0);
 

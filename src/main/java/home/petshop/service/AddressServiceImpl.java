@@ -25,35 +25,35 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address create(Address address) {
+    public Address create(Address address, int userId) {
         Assert.notNull(address, "address must not be null");
-        return repository.save(address);
+        return repository.save(address, userId);
     }
 
     @Override
-    public void delete(int id) throws NotFoundException {
-        checkNotFoundWithId(repository.delete(id), id);
+    public void delete(int id, int userId) throws NotFoundException {
+        checkNotFoundWithId(repository.delete(id, userId), id);
     }
 
     @Override
-    public Address get(int id) throws NotFoundException {
-        return checkNotFoundWithId(repository.get(id), id);
+    public Address get(int id, int userId) throws NotFoundException {
+        return checkNotFoundWithId(repository.get(id, userId), id);
     }
 
     @Override
-    public Address getByStreet(String street) throws NotFoundException {
+    public Address getByStreet(String street, int userId) throws NotFoundException {
         Assert.notNull(street, "street must not be null");
-        return checkNotFound(repository.getByStreet(street), "street=" + street);
+        return checkNotFound(repository.getByStreet(street, userId), "street=" + street);
     }
 
     @Override
-    public List<Address> getAll() {
-        return repository.getAll();
+    public List<Address> getAll(int userId) {
+        return repository.getAll(userId);
     }
 
     @Override
-    public void update(Address address) throws NotFoundException {
+    public void update(Address address, int userId) throws NotFoundException {
         Assert.notNull(address, "address must not be null");
-        checkNotFoundWithId(repository.save(address), address.getId());
+        checkNotFoundWithId(repository.save(address, userId), address.getId());
     }
 }

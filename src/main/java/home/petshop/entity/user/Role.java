@@ -3,7 +3,8 @@ package home.petshop.entity.user;
 public enum Role {
     ROLE_GUEST,
     ROLE_USER,
-    ROLE_USER_CORP,
+    ROLE_CUSTOMER,
+    ROLE_GROUP_ADMIN,
     ROLE_PARTNER,
     ROLE_COURIER,
     ROLE_ORDER_MANAGER,

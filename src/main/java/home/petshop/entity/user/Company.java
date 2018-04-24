@@ -1,18 +1,12 @@
 package home.petshop.entity.user;
 
-import home.petshop.entity.AbstractNamedEntity;
-
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
 
 @Entity
 @Table(name="COMPANIES")
-public class Company extends AbstractNamedEntity {
-
-    @OneToMany(mappedBy = "company")
-    private List<User> users;
+public class Company extends Group {
 
     public Company() {
     }
@@ -22,7 +16,7 @@ public class Company extends AbstractNamedEntity {
     }
 
     public Company(Integer id, String name, List<User> users) {
-        super(id, name);
+        super(id, name, users);
         this.users = users;
     }
 
